@@ -50,38 +50,56 @@ using namespace std;
 // }
 //**************************************************Accenture question 3***************************************
 
-bool is_pass(string str){
-  if(str.length()==0){
+// bool is_pass(string str){
+//   if(str.length()==0){
+//     return 0;
+//   }
+//   if(int(str[0])>48||int(str[0])<57){
+//     return 0;
+//   }
+//   int n=str.length();
+//   bool len_flag=(n>=4)?1:0;
+//   bool num_digit_flag=0;//ASCII(88-57)
+//   for(int i=1;i<n;i++){
+//     if(int(str[i])>=48||int(str[i])<=57){
+//       num_digit_flag=1;
+//       break;
+//     }
+//   }
+//   bool capital_flag=0;
+//   for(int i=0;i<n;i++){
+//     if(int(str[i])>=65||int(str[i])<=90){
+//       capital_flag=1;
+//       break;
+//     }
+//   }
+//   bool space_slash_flag=0;
+//   for(int i=0;i<n;i++){
+//     if(str[i]==' '||str[i]=='/'){
+//       space_slash_flag=1;
+//       break;
+//     }
+//   }
+//   return (capital_flag && space_slash_flag && len_flag && num_digit_flag);
+// }
+
+//*****************************************************Accenture question 4*********************************************************************
+int find_count(int *arr,int n,int num,int diff){
+  if(n==0){
     return 0;
   }
-  if(int(str[0])>48||int(str[0])<57){
-    return 0;
-  }
-  int n=str.length();
-  bool len_flag=(n>=4)?1:0;
-  bool num_digit_flag=0;//ASCII(88-57)
-  for(int i=1;i<n;i++){
-    if(int(str[i])>=48||int(str[i])<=57){
-      num_digit_flag=1;
-      break;
-    }
-  }
-  bool capital_flag=0;
+  int count=0;
   for(int i=0;i<n;i++){
-    if(int(str[i])>=65||int(str[i])<=90){
-      capital_flag=1;
-      break;
+    if(abs(num-arr[i])<=diff){
+      count++;
     }
   }
-  bool space_slash_flag=0;
-  for(int i=0;i<n;i++){
-    if(str[i]==' '||str[i]=='/'){
-      space_slash_flag=1;
-      break;
-    }
+  if(count==0){
+    return -1;
   }
-  return (capital_flag && space_slash_flag && len_flag && num_digit_flag);
+  return count;
 }
+
 int main(){
   // vector<int> arr={2 ,8 ,3 ,5 ,7, 4, 1 ,2};
   // cout<<rats(7,2,8,arr);
@@ -89,6 +107,10 @@ int main(){
   //string str="1C0C1C1A0B1";
   //bit_op(str);
 
-
+  int arr[]={12,3,14,56,77,13};
+  int n=6;
+  int num=13;
+  int diff=2;
+  cout<<find_count(arr,n,num,diff);
   return 0;
 }
