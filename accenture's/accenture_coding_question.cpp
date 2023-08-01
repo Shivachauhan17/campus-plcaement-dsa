@@ -84,20 +84,65 @@ using namespace std;
 // }
 
 //*****************************************************Accenture question 4*********************************************************************
-int find_count(int *arr,int n,int num,int diff){
-  if(n==0){
-    return 0;
-  }
-  int count=0;
-  for(int i=0;i<n;i++){
-    if(abs(num-arr[i])<=diff){
-      count++;
-    }
-  }
-  if(count==0){
-    return -1;
-  }
-  return count;
+// int find_count(int *arr,int n,int num,int diff){
+//   if(n==0){
+//     return 0;
+//   }
+//   int count=0;
+//   for(int i=0;i<n;i++){
+//     if(abs(num-arr[i])<=diff){
+//       count++;
+//     }
+//   }
+//   if(count==0){
+//     return -1;
+//   }
+//   return count;
+// }
+
+
+//**************************************************Accenture question 5************************************************************************
+// int diffOfSum(int m,int n){
+//   if(m==0 || n==0){
+//     return 0;
+//   }
+//   int sum=0;
+//   for(int i=1;i<=m;i++){
+//     if(i%n==0){
+//       sum+=i;
+//     }
+//   }
+//   return sum;
+// }
+
+
+//********************************************* Accenture question 6*********************************************
+// int secondLargest(vector<int> arr){
+//   int n=arr.size();
+//   if(n==3 || n<3){
+//     return 0;
+//   }
+//   int max=0;
+//   int secondmax=0;
+//   for(int i=0;i<n;i++){
+//     if(i%2!=0){
+//       max=max<arr[i]?arr[i]:max;
+//     }
+//   }
+//   for(int i=0;i<n;i++){
+//     if(i%2!=0 && arr[i]<max){
+//       secondmax=secondmax<arr[i]?arr[i]:secondmax;
+//     }
+//   }
+//   return secondmax;
+// }
+
+//***********************************************Accenture question 7***********************************************************
+int productSmallestPair(int sum , vector<int> arr){
+  int n=arr.size();
+  int minsum=0;
+  int minmul=0;
+  
 }
 
 int main(){
@@ -107,10 +152,17 @@ int main(){
   //string str="1C0C1C1A0B1";
   //bit_op(str);
 
-  int arr[]={12,3,14,56,77,13};
-  int n=6;
-  int num=13;
-  int diff=2;
-  cout<<find_count(arr,n,num,diff);
+  // int arr[]={12,3,14,56,77,13};
+  // int n=6;
+  // int num=13;
+  // int diff=2;
+  // cout<<find_count(arr,n,num,diff);
+
+  // cout<<diffOfSum(4,2);
+
+  // vector<int> arr={3, 2, 1, 7, 5, 4};
+  // cout<<secondLargest(arr);
+
+
   return 0;
 }
