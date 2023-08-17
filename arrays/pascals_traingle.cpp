@@ -44,6 +44,7 @@ vector<int> genrateRow(int n){
 
 vector<vector<int>> pascalTraingle(int N){
     vector<vector<int>> ans;
+    ans.push_back({1});
     for(int i=1;i<=N;i++){
         ans.push_back(genrateRow(i));
     }
