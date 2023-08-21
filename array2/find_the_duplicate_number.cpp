@@ -19,6 +19,7 @@ int duplicate(vector<int> arr){
 
 // Linked List :- t.c.->O(n), s.c.->O(1) 
 //pending
+//gonna udate it to using xor
 
 int main(){
     vector<int> arr={2,5,9,6,9,3,8,9,7,1};
