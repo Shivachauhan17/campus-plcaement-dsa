@@ -2,7 +2,8 @@
 #include<vector>
 using namespace std;
 
-int count=0;
+
+// int count=0;
 //Optimal-> can be solved using integrated mergesort
 void merge(int start,int mid,int end,vector<int>& arr){
     int leftSubarrayLen=mid-start+1;
@@ -25,9 +26,6 @@ void merge(int start,int mid,int end,vector<int>& arr){
         }
         else{
             arr[indexOfMergedArray]=rightSubarray[indexOnSubarrayTwo];
-            //**********************************
-            count+=(mid-indexOfMergedArray+1);//all element greter than current element can form the pair with smaller array of right subarray 
-            //*******************************
             indexOnSubarrayTwo++;
         }
         indexOfMergedArray++;
@@ -48,19 +46,35 @@ void merge(int start,int mid,int end,vector<int>& arr){
     }
 }
 
-
-void mergeSort(int start,int end,vector<int>& arr){
-    if(start<end){
-        int mid=start+(end-start)/2;
-        mergeSort(start,mid,arr);
-        mergeSort(mid+1,end,arr);
-        merge(start,mid,end,arr);
+//t.c. :- O(n1+n2)
+int countPairs(vector<int> arr,int start,int mid,int end){
+    int count=0;
+    int right=mid+1;
+    for(int i=start;i<=mid;i++){
+        while(right<=end && arr[i]>(2*arr[right])){
+            right++;
+        }
+        count+=(right-(mid+1));
     }
+    // cout<<count;
+    return count;
 }
 
+int mergeSort(int start,int end,vector<int>& arr){
+    if(start>=end) return 0;
+        int count=0;
+        int mid=start+(end-start)/2;
+        count+=mergeSort(start,mid,arr);
+        count+=mergeSort(mid+1,end,arr);
+        count+=countPairs(arr,start,mid,end);
+        merge(start,mid,end,arr);
+        // cout<<count;
+        return count;
+}
+
+
+
 int main(){
-    vector<int> arr={5,3,2,4,1};
-    mergeSort(0,arr.size()-1,arr);
-    cout<<count;
-    return 0;
+    vector<int> arr={4, 1, 2, 3, 1};
+    cout<<mergeSort(0,arr.size()-1,arr);
 }

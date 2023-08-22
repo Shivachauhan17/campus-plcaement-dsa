@@ -11,8 +11,8 @@ void bsearch_in_2d(vector<vector<int>>& arr,int element){
     int right=m*n-1;
     while(left<=right){
         int mid=(left+(right-left)/2);
-        if(element==arr[(mid/m)][(mid%n)]){
-            cout<<"{"<<(mid/m)<<","<<(mid%n)<<"}";
+        if(element==arr[(mid/n)][(mid%n)]){
+            cout<<"{"<<(mid/n)<<","<<(mid%n)<<"}";
         }
         if(element<arr[(mid/m)][(mid%n)]){
             right=mid-1;
