@@ -39,7 +39,7 @@ int longestSubstring2(string str) {
     map<int,int> m;
     int left=0;
     int right=0;
-    int len=1;
+    int len=0;
     int n=str.size();
     while(right<n){
         if(m.find(str[right])!=m.end()){
