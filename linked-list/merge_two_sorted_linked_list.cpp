@@ -29,6 +29,5 @@ Node* merge(Node* a,Node* b){
 }
 
  int main(){
-   ListNode* ListNode(1)
  }
  
