@@ -1,33 +1,38 @@
-#include<iostream>
-using namespace std;
+class Solution {
 
-
-class Node {
 public:
-    int data;
-    Node* next;
-};
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
 
-Node* merge(Node* a,Node* b){
-    Node dummy;
-    Node* tail=&dummy;
-    if(a==NULL){
-        tail->next=b;
-        return dummy.next;
-    }
-    if(b==NULL){
-        tail->next=a;
-        return dummy.next;
-    }
+        // when list1 is empty then 
+        // our output will be same as list2
+        if(l1 == NULL) return l2; 
 
-    while(1){
-        if(a->data<b->data){
-            
-        }
-    }
-    
-}
+        // when list2 is empty then our output 
+        // will be same as list1
+        if(l2 == NULL) return l1;
 
- int main(){
- }
+        // pointing l1 and l2 to smallest and greatest one
+        if(l1->val > l2->val) std::swap(l1,l2);
+
+        // act as head of resultant merged list
+        ListNode* res = l1;
+
+        while(l1 != NULL && l2 != NULL) {
  
+            ListNode* temp = NULL;
+
+            while(l1 != NULL && l1->val <= l2->val) {
+
+                temp = l1;//storing last sorted node  
+                l1 = l1->next;
+            }
+
+            // link previous sorted node with 
+            // next larger node in list2
+            temp->next = l2;
+            std::swap(l1,l2);
+        }
+
+        return res;
+    }
+};

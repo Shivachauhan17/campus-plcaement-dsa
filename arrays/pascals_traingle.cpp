@@ -22,7 +22,6 @@ void printRow(int n){
         ans=ans*(n-i);
         ans=ans/i;
     }
-    cout<<ans;
 } 
  
 
@@ -52,7 +51,7 @@ vector<vector<int>> pascalTraingle(int N){
 }
 
 int main(){
-     cout<<findParticular(3,2)<<endl;
+     cout<<findParticular(3,2)<<endl;//it will find the element(4,3)
      printRow(6); 
      vector<vector<int>> ans=pascalTraingle(6);
      for(int i=0;i<ans.size();i++){

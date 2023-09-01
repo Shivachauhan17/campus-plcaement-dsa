@@ -13,10 +13,12 @@ class Node{
     }
 };
 
-void insertAtHead(Node* &head,int data){
+Node* insertAtHead(Node* &head,int data){
     Node* temp=new Node(data);
     temp->next=head;
     head=temp; 
+
+    return head;
 }
 
 void print(Node* &head){
