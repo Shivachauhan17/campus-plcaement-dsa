@@ -39,7 +39,7 @@ vector<vector<int>> permute(vector<int> &arr){
 //t.c.:- O(n!*n)[n! for generating the n! permutations and n for loop]
 
 void recur2(int index, vector < int > & nums, vector < vector < int >> & ans){
-    if(index=nums.size()){
+    if(index==nums.size()){
         ans.push_back(nums);
         return;
     }
@@ -52,19 +52,22 @@ void recur2(int index, vector < int > & nums, vector < vector < int >> & ans){
 }
 
 
-vector<vector<int>> permute2(vector<int> &arr){
-    vector<vector<int>> ans;
+void permute2(vector<int> &arr,vector<vector<int>> &ans){
+   
     recur2(0,arr,ans);
-    return ans;
+   
     
 }
 
 
 int main(){
     vector<int> arr={1,2,3};
-    vector<vector<int>> ans=permute2(arr);
+    
+    vector<vector<int>> ans;
+    permute2(arr,ans);
+    cout<<"total permutation:"<<ans.size()<<endl;
     for(int i=0;i<ans.size();i++){
-        for(int j=0;j<ans[i].size();i++){
+        for(int j=0;j<ans[i].size();j++){
             cout<<ans[i][j]<<" ";
         }
         cout<<endl;

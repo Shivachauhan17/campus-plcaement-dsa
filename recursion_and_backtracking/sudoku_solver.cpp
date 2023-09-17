@@ -25,7 +25,7 @@ bool solveSudoku(vector<vector<char>> & board){
                         board[i][j]=c;
                         if(solveSudoku(board))
                             return true;
-                        else
+                        
                             board[i][j]='.';
                     }
                 }
