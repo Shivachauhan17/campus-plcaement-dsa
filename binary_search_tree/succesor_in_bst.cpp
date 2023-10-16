@@ -27,5 +27,5 @@ Node* inorderSucccesor(Node* root,Node * p){
             root=root->left;
         }
     }
-    return successor
+    return successor;
 }
