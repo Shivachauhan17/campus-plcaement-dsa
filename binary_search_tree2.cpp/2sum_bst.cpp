@@ -19,7 +19,7 @@ class Node{
 class BstIterator{
     public:
     stack<Node*> myStack;
-    bool reverse;
+    bool reverse=  true;
     BstIterator(Node* root,bool isReverse){
         reverse=isReverse;
         pushAll(root);
@@ -28,11 +28,13 @@ class BstIterator{
     bool hasNext(){
         return !myStack.empty();
     }
-
+    //this next will work for both next() as well as before()
+    //and we are using it by manipulating reverse variable flags
     int next(){
         Node* temp=myStack.top();
         myStack.pop();
-        pushAll(temp->right);
+        if(!reverse) pushAll(temp->right);
+        else pushAll(temp->left);
         return temp->data;
     }
 
@@ -50,6 +52,27 @@ class BstIterator{
     }
 };
 
+class Solution{
+    public:
+    bool findTarget(Node* root,int k){
+         if(!root) return false;
+         //for next
+         BstIterator l(root,false);
+         //for before
+         BstIterator r(root,true);
+
+        int i=l.next();
+        int j=r.next();
+
+        while(i<j){
+            if(i+j==k) return true;
+            else if((i+j)<k) i=l.next();
+            else j=r.next();
+        }
+        return false;
+
+    }
+};
 
 
 
@@ -64,9 +87,8 @@ int main(){
     root->right->left=new Node(13);
     root->right->right=new Node(17);
 
-    BstIterator i(root,true);
-    cout<<i.next();
-    cout<<i.next();
+    Solution s;
+    cout<<s.findTarget(root,11); 
 
     return 0;
 }
